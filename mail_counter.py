@@ -26,20 +26,22 @@ for line in lines:
 log_count=len(target_log)
 sent_count=0
 reject_count=0
+deferred_count=0
 
 for line in target_log:
-    if line.find("sent") >= 0:
+    if line.find("status=sent (250 2.0.0 OK") >= 0:
         sent_count+=1
-
-for line in target_log:
-    if line.find("reject") >= 0:
+    elif line.find("NOQUEUE: reject") >= 0:
         reject_count+=1
+    elif line.find("status=deferred") >= 0:
+        deferred_count+=1
 
 url=webhookUrl
 message = ("```number of mails around " + target_time + ":xx:xx \n"
                 "log count : " + str(log_count) + "\n" 
                 "sent      : " + str(sent_count) + "\n"
-                "rejected  : " + str(reject_count) + "```"
+                "rejected  : " + str(reject_count) + "\n"
+                "deferred  : " + str(deferred_count) + "```"
                 )
 
 data = {
