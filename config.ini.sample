@@ -1,0 +1,5 @@
+[aws]
+naclId=acl-xxxxxxxx
+
+[slack]
+webhookUrl=https://hooks.slack.com/services/XXXXXXXXX/YYYYYYYYY/ZZZZZZZZZZZZZZZZZZZZZZZZ
