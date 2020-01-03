@@ -8,7 +8,7 @@ import json
 
 cfg = configparser.ConfigParser()
 cfg.read(os.path.dirname(__file__)+"/config.ini")
-webhookUrl=cfg["slack"]["webhookUrl"]
+WEBHOOK_URL=cfg["slack"]["webhookUrl"]
 
 now = datetime.datetime.now()
 target_time = (now+datetime.timedelta(hours=-1)).strftime("%Y/%m/%d %H")
@@ -36,7 +36,7 @@ for line in target_log:
     elif line.find("status=deferred") >= 0:
         deferred_count+=1
 
-url=webhookUrl
+url=WEBHOOK_URL
 message = ("```number of mails around " + target_time + ":xx:xx \n"
                 "log count : " + str(log_count) + "\n" 
                 "sent      : " + str(sent_count) + "\n"
@@ -58,4 +58,5 @@ with urllib.request.urlopen(req) as res:
 
 print('ResponseBody:'+str(body), file=sys.stderr)
 exit (0)
+
 
