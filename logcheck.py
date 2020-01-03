@@ -71,9 +71,10 @@ def mail ():
              target_log.append(line[:-1])
 
     for line in target_log:
-        # from unknown となっているIPアドレスを怪しいアクセスとする
+        # disconnect となっているIPアドレスを怪しいアクセスとする
         # Todo: maillog のセキュリティ的なエラー表示
-        if line.find("unknown") >= 0:
+        # 参考: https://qiita.com/tomson/items/610a472bdcba6bd04988
+        if line.find("disconnect") >= 0:
             m = re.search('\\d+\\.\\d+\\.\\d+\\.\\d+', line)
             evil_ip = str(m.group(0))
             if not evil_ip in evil_list:
