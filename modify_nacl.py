@@ -156,7 +156,9 @@ def main (args):
 
 ## do main ##
 if __name__ == "__main__":
+    if len(sys.argv) == 1:
+        usage ()
+        exit (1)
     main(sys.argv)
     exit (0)
-
 
