@@ -120,18 +120,23 @@ def orgnize_entry ():
 def main (args):
     global command
     command = args[0]
+
     if command == "test":
         print ("!! test !!")
+
     elif command == "display_my_rules":
         my_rules = get_my_rules ()
         print (str(json.dumps(my_rules,indent=2)))
         slack ('```' + __file__ + ' ' + command + ' ' + ' → \n' + str(json.dumps(my_rules,indent=2)) + '```')
+
     elif command == "check_rules_empty": # will remove
         my_rules = get_my_rules ()
         has_my_rules_empty_number (my_rules)
+
     elif command == "search_next_empty_number": # will remove
         next_empty = get_next_empty_number ()
         print (next_empty)
+
     elif command == "create_entry":
         ip = args[1]
         next_empty = get_next_empty_number ()
@@ -142,10 +147,14 @@ def main (args):
             orgnize_entry ()
             create_entry (str(next_empty), ip)
             slack ('```' + __file__ + ' ' + command + ' ' + ' → \n' + str(next_empty) + ':' + ip + '```')
+        with open(os.path.dirname(__file__)+"/docs/denyip.txt", 'a') as f:
+            f.write(ip)
+
     elif command == "delete_entry":
         rn = args[1]
         delete_entry (str(rn))
         slack ('```' + __file__ + ' ' + command + ' ' + ' → \n' + str(rn) + ':' + '```')
+
     elif command == "orgnize_entry":
         orgnize_entry ()
 
@@ -159,6 +168,7 @@ if __name__ == "__main__":
     if len(sys.argv) == 1:
         usage ()
         exit (1)
+    sys.argv.pop(0)
     main(sys.argv)
     exit (0)
 
