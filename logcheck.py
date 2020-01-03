@@ -43,8 +43,6 @@ def secure ():
                 evil_list[evil_ip] += 1
 
     for line in target_log:
-        # "Invalid user" | "Bye Bye" となっているIPアドレスを怪しいアクセスとする
-        # Todo: secure のセキュリティ的なエラー表示
         if line.find("Bye Bye") >= 0:
             m = re.search('\\d+\\.\\d+\\.\\d+\\.\\d+', line)
             evil_ip = str(m.group(0))
