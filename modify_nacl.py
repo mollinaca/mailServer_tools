@@ -119,7 +119,7 @@ def orgnize_entry ():
 ## main function ##
 def main (args):
     global command
-    command = args[1]
+    command = args[0]
     if command == "test":
         print ("!! test !!")
     elif command == "display_my_rules":
@@ -133,7 +133,7 @@ def main (args):
         next_empty = get_next_empty_number ()
         print (next_empty)
     elif command == "create_entry":
-        ip = args[2]
+        ip = args[1]
         next_empty = get_next_empty_number ()
         if not next_empty == "null":
             create_entry (str(next_empty), ip)
@@ -143,7 +143,7 @@ def main (args):
             create_entry (str(next_empty), ip)
             slack ('```' + __file__ + ' ' + command + ' ' + ' → \n' + str(next_empty) + ':' + ip + '```')
     elif command == "delete_entry":
-        rn = args[2]
+        rn = args[1]
         delete_entry (str(rn))
         slack ('```' + __file__ + ' ' + command + ' ' + ' → \n' + str(rn) + ':' + '```')
     elif command == "orgnize_entry":
