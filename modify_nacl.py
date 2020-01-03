@@ -17,7 +17,7 @@ def usage ():
         "commands: \n"
         "    test : print test message \n"
         "    display_my_rules : get and display my deny rules \n"
-        "    create_entry : create entry [RuleNumber] [IPaddress] \n"
+        "    create_entry : create entry [IPaddress] \n"
         "    delete_entry : delete entry [RuleNumber] \n"
         "    orgnize_entry : make empty rulenumber if number of rules > 30 \n "
     )
