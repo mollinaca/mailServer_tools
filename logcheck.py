@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 import sys, os, re
 import datetime
-
 import modify_nacl
 
 ## functions ##
