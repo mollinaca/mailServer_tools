@@ -76,6 +76,8 @@ def get_next_empty_number ():
 def create_entry (rn:str, ip:str):
     target_ip=ip+"/32"
     res = subprocess.check_output(["aws", "ec2", "create-network-acl-entry", "--network-acl-id", NACL_ID, "--ingress", "--rule-number", rn, "--protocol", "-1", "--cidr-block", target_ip, "--rule-action", "deny"]).decode('utf-8')
+    with open(os.path.dirname(__file__)+"/docs/denyip.txt", 'a') as f:
+        f.write(target_ip)
     return str(res)
 
 def delete_entry (rn:str):
@@ -147,8 +149,6 @@ def main (args):
             orgnize_entry ()
             create_entry (str(next_empty), ip)
             slack ('```' + __file__ + ' ' + command + ' ' + ' → \n' + str(next_empty) + ':' + ip + '```')
-        with open(os.path.dirname(__file__)+"/docs/denyip.txt", 'a') as f:
-            f.write(ip)
 
     elif command == "delete_entry":
         rn = args[1]
