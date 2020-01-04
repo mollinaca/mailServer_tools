@@ -54,9 +54,8 @@ headers = {
 
 req = urllib.request.Request(url, json.dumps(data).encode(), headers)
 with urllib.request.urlopen(req) as res:
-    body = res.read()
+    body = res.read().decode('utf-8')
 
 print('ResponseBody:'+str(body), file=sys.stderr)
 exit (0)
-
 
