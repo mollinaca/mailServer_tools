@@ -12,7 +12,7 @@ WEBHOOK_URL=cfg["slack"]["webhookUrl"]
 
 now = datetime.datetime.now()
 target_time = (now+datetime.timedelta(hours=-1)).strftime("%Y/%m/%d %H")
-search_target_time = (now+datetime.timedelta(hours=-1)).strftime("%b  %-d %H") 
+search_target_time = (now+datetime.timedelta(hours=-1)).strftime("%b %-d %H") 
 
 ld = open ("/var/log/maillog")
 lines = ld.readlines()
