@@ -12,7 +12,8 @@ WEBHOOK_URL=cfg["slack"]["webhookUrl"]
 
 now = datetime.datetime.now()
 target_time = (now+datetime.timedelta(hours=-1)).strftime("%Y/%m/%d %H")
-today_date = target_time = (now+datetime.timedelta(hours=-1)).strftime("%d")
+today_date = (now+datetime.timedelta(hours=-1)).strftime("%d")
+
 if 1 < int(today_date) < 9:
     search_target_time = (now+datetime.timedelta(hours=-1)).strftime("%b  %-d %H") 
 else:
