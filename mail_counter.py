@@ -42,7 +42,8 @@ for line in target_log:
         deferred_count+=1
 
 url=WEBHOOK_URL
-message = ("```number of mails around " + target_time + ":xx:xx \n"
+message = ("```[" + os.uname()[1] + "] \n" 
+		"number of mails around " + target_time + ":xx:xx \n"
                 "log count : " + str(log_count) + "\n" 
                 "sent      : " + str(sent_count) + "\n"
                 "rejected  : " + str(reject_count) + "\n"
